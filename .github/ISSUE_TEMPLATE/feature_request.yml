@@ -1,0 +1,21 @@
+name: Feature request
+description: Ask for an API or an option pyxpo-query does not have yet.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What do you want to do
+      description: The app feature you are building, and what is missing for it.
+    validations:
+      required: true
+  - type: textarea
+    id: api
+    attributes:
+      label: API you would like
+      render: python
+  - type: textarea
+    id: native
+    attributes:
+      label: Native APIs
+      description: The iOS or Android API this would use, if you know it.

@@ -1,0 +1,48 @@
+# Releases this package to PyPI. Trigger: push a tag v<version> that matches __version__ in the package.
+# The PyPI project needs a Trusted Publisher for this repo, workflow release.yml and environment `pypi`.
+name: release
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: pkg
+      - uses: actions/checkout@v4
+        with:
+          repository: pyxpo/pyxpo
+          path: core
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ./core pytest build twine
+      - run: pip install --no-deps -e ./pkg
+      - run: python -m pytest -q
+        working-directory: pkg
+      - name: build and check (wheel + sdist carry pyxpo-module.json, Swift, Kotlin, entry point; tag matches version)
+        run: python core/tools/build_packages.py --path pkg --tag "${GITHUB_REF_NAME}" --outdir dist/
+      - run: twine check dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

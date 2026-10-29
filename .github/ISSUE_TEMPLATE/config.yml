@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: pyxpo core issues
+    url: https://github.com/pyxpo/pyxpo/issues
+    about: Problems with the CLI, builds, the runtime or components that are not part of pyxpo-query.
+  - name: Security problem
+    url: https://github.com/pyxpo/pyxpo-query/security/advisories/new
+    about: Report a vulnerability privately.

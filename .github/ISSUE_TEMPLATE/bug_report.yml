@@ -1,0 +1,36 @@
+name: Bug report
+description: Something in pyxpo-query does not work as documented.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you got instead. Paste errors as text.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Smallest code that shows it
+      render: python
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: "pyxpo-query 0.1.0a1, pyxpo 0.1.0a5, Python 3.12"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      multiple: true
+      options: [Android, iOS, Web, Desktop]
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device or simulator
+      placeholder: "Pixel 8 (Android 15), iPhone 17 simulator (iOS 26)"

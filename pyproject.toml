@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyxpo-query"
+dynamic = ["version"]
+description = "Server-state cache for pyxpo: cached queries, infinite lists, mutations, refetch on focus and reconnect, in pure Python."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Vishal Chaubey" }]
+keywords = ["pyxpo", "pyxpo-module", "mobile", "android", "ios", "query", "cache", "data-fetching", "server-state", "react-query", "infinite-scroll", "mutation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: Android",
+    "Operating System :: iOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+requires-python = ">=3.9"
+dependencies = ["pyxpo>=0.1.0a2,<0.2"]
+
+[project.urls]
+Homepage = "https://github.com/pyxpo/pyxpo-query"
+Documentation = "https://github.com/pyxpo/pyxpo-query/blob/main/README.md"
+Changelog = "https://github.com/pyxpo/pyxpo-query/blob/main/CHANGELOG.md"
+Source = "https://github.com/pyxpo/pyxpo-query"
+Issues = "https://github.com/pyxpo/pyxpo-query/issues"
+
+# How `pyxpo build` finds this module: the entry point name is the module name apps list in
+# `[tool.pyxpo] modules`, its value the import package holding pyxpo-module.json.
+[project.entry-points."pyxpo.modules"]
+query = "pyxpo_query"
+
+[tool.setuptools]
+packages = ["pyxpo_query"]
+
+[tool.setuptools.dynamic]
+version = { attr = "pyxpo_query.__version__" }
+
+[tool.setuptools.package-data]
+pyxpo_query = ["pyxpo-module.json", "py.typed"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["__pycache__", "*.pyc", ".DS_Store"]
