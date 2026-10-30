@@ -19,7 +19,7 @@ jobs:
         with:
           repository: pyxpo/pyxpo
           path: core
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: pip install ./core pytest build twine

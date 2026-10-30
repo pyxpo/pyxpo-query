@@ -16,7 +16,7 @@ jobs:
         python-version: ["3.9", "3.12"]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install "pyxpo @ git+https://github.com/pyxpo/pyxpo.git" pytest
@@ -34,7 +34,7 @@ jobs:
         with:
           repository: pyxpo/pyxpo
           path: core
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: pip install build
