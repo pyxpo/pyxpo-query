@@ -29,7 +29,7 @@ jobs:
       - name: build and check (wheel + sdist carry pyxpo-module.json, Swift, Kotlin, entry point; tag matches version)
         run: python core/tools/build_packages.py --path pkg --tag "${GITHUB_REF_NAME}" --outdir dist/
       - run: twine check dist/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
